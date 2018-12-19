@@ -58,7 +58,7 @@ void halfSecondPulses( int pinNum, int duration){
 /*======================= setup ========================= */
 void setup(void) 
 {
-  Serial.begin(115200);
+//  Serial.begin(115200);
   if(!mag.begin()){
     /* There was a problem detecting the LSM303 ... check your connections */
     Serial.println("Ooops, no LSM303 detected ... Check your wiring!");
@@ -91,13 +91,13 @@ void loop(void)
   
   if(us2distance < 50 && us2distance > 0){
     analogWrite(leftRumble,30);
-    if(us2distance < 20 && us2distance > 0){
+    if(us2distance < 30 && us2distance > 0){
       analogWrite(leftRumble,60);
     }
   }
-  else if(us1distance < 50 && us1distance > 0){
+  else if(us1distance < 80 && us1distance > 0){
     analogWrite(rightRumble,30);
-    if(us1distance < 20 && us1distance > 0){
+    if(us1distance < 50 && us1distance > 0){
       analogWrite(rightRumble,60);
     }
   }
@@ -106,10 +106,10 @@ void loop(void)
     analogWrite(rightRumble, 0);
   }
   
-  Serial.print("Compass Heading: ");
-  Serial.println(heading);
-  Serial.print(us1distance);
-  Serial.print("cm us1 - ");
-  Serial.print(us2distance);
-  Serial.println("cm us2");
+//  Serial.print("Compass Heading: ");
+//  Serial.println(heading);
+//  Serial.print(us1distance);
+//  Serial.print("cm us1 - ");
+//  Serial.print(us2distance);
+//  Serial.println("cm us2");
 } //end loop
